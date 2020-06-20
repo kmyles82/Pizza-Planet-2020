@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
   <div class="menu_wrapper">
     <!-- menu -->
@@ -19,12 +21,13 @@
             <td>{{ option.size }}</td>
             <td>${{ option.price }}</td>
             <td>
-              <button type="button" class="btn_green">+</button>
+              <button type="button" class="btn_green" @click="addToBasket(item, option)">+</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    {{basket}}
   </div>
 </template>
 
@@ -33,6 +36,7 @@ export default {
   name: "appMenu",
   data() {
     return {
+      basket: [],
       getMenuItems: {
         1: {
           name: "Margherita",
@@ -80,6 +84,24 @@ export default {
         }
       }
     };
+  },
+  methods: {
+    async addToBasket(item, option) {
+      const pizzaExist = await this.basket.find(
+        pizza => pizza.name === item.name && pizza.size === option.size
+      );
+
+      if (pizzaExist) {
+        pizzaExist.quantiy++;
+        return;
+      }
+      this.basket.push({
+        name: item.name,
+        price: item.price,
+        size: option.size,
+        quantiy: 1
+      });
+    }
   }
 };
 </script>
