@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable */
 
 <template>
@@ -21,13 +22,39 @@
             <td>{{ option.size }}</td>
             <td>${{ option.price }}</td>
             <td>
-              <button type="button" class="btn_green" @click="addToBasket(item, option)">+</button>
+              <button
+                type="button"
+                class="btn_green"
+                @click="addToBasket(item, option)"
+              >
+                +
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    {{basket}}
+    <!-- shopping basket -->
+    <div class="basket">
+      <h3>~ Basket ~</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <button class="btn_green">&#8722;</button>
+              <span>2</span>
+              <button class="btn_green">&#43;</button>
+            </td>
+            <td>
+              Pepperoni 9"
+            </td>
+            <td>$6.95</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Order total:</p>
+      <button class="btn_green">Place Order</button>
+    </div>
   </div>
 </template>
 
@@ -92,14 +119,15 @@ export default {
       );
 
       if (pizzaExist) {
-        pizzaExist.quantiy++;
+        pizzaExist.quantity++;
         return;
       }
+
       this.basket.push({
         name: item.name,
         price: item.price,
         size: option.size,
-        quantiy: 1
+        quantity: 1
       });
     }
   }
@@ -116,7 +144,7 @@ h3 {
   flex-direction: column;
 }
 
-.menu {
+.menu, .basket {
   background: #f1e6da;
   border-radius: 3px;
   height: 100vh;
@@ -132,6 +160,10 @@ h3 {
 
   .menu {
     width: 65vw;
+  }
+
+  .basket{
+    width: 35vw;
   }
 }
 </style>
