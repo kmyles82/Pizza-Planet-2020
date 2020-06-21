@@ -22,13 +22,7 @@
             <td>{{ option.size }}</td>
             <td>${{ option.price }}</td>
             <td>
-              <button
-                type="button"
-                class="btn_green"
-                @click="addToBasket(item, option)"
-              >
-                +
-              </button>
+              <button type="button" class="btn_green" @click="addToBasket(item, option)">+</button>
             </td>
           </tr>
         </tbody>
@@ -37,23 +31,26 @@
     <!-- shopping basket -->
     <div class="basket">
       <h3>~ Basket ~</h3>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <button class="btn_green">&#8722;</button>
-              <span>2</span>
-              <button class="btn_green">&#43;</button>
-            </td>
-            <td>
-              Pepperoni 9"
-            </td>
-            <td>$6.95</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Order total:</p>
-      <button class="btn_green">Place Order</button>
+      <div v-if="basket.length > 0">
+        <table>
+          <tbody v-for="(item, index) in basket" :key="index">
+            <tr>
+              <td>
+                <button class="btn_green" @click="decreaseQuantity(item)">&#8722;</button>
+                <span>{{ item.quantity }}</span>
+                <button class="btn_green" @click="increaseQuantity(item)">&#43;</button>
+              </td>
+              <td>{{ item.name }} {{ item.size }}"</td>
+              <td>${{ item.price * item.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Order total: {{}}$</p>
+        <button class="btn_green">Place Order</button>
+      </div>
+      <div v-else>
+        <p>{{ basketText }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -64,6 +61,7 @@ export default {
   data() {
     return {
       basket: [],
+      basketText: "Your basket is empty",
       getMenuItems: {
         1: {
           name: "Margherita",
@@ -120,15 +118,29 @@ export default {
 
       if (pizzaExist) {
         pizzaExist.quantity++;
+
         return;
       }
 
       this.basket.push({
         name: item.name,
-        price: item.price,
+        price: option.price,
         size: option.size,
         quantity: 1
       });
+    },
+    increaseQuantity(item) {
+      item.quantity++;
+    },
+    decreaseQuantity(item) {
+      item.quantity--;
+
+      if (item.quantity === 0) {
+        this.removeFromBasket(item);
+      }
+    },
+    removeFromBasket(item){
+      this.basket.splice(this.basket.indexOf(item), 1);
     }
   }
 };
@@ -144,7 +156,8 @@ h3 {
   flex-direction: column;
 }
 
-.menu, .basket {
+.menu,
+.basket {
   background: #f1e6da;
   border-radius: 3px;
   height: 100vh;
@@ -162,7 +175,7 @@ h3 {
     width: 65vw;
   }
 
-  .basket{
+  .basket {
     width: 35vw;
   }
 }
