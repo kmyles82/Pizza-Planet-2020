@@ -59,4 +59,11 @@ input, textarea {
   border: solid 1px #f79e38;
 }
 
+button{
+  background: rgb(63, 145, 63);
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
 </style>
