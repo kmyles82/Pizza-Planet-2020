@@ -1,57 +1,81 @@
 <template>
-  <form action="">
+  <form action>
     <h3>Add new pizza:</h3>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" />
+      <input type="text" id="name" v-model="newPizza.name" />
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea name="description" id="description"></textarea>
+      <textarea name="description" id="description" v-model="newPizza.description" rows="5"></textarea>
     </div>
     <p>
       <strong>Option 1:</strong>
     </p>
     <div class="form-group">
       <label for="size">Size (")</label>
-      <input type="text" id="size" />
+      <input type="text" id="size" v-model="newPizza.options[0].size" />
     </div>
     <div class="form-group">
       <label for="price1">Price</label>
-      <input type="text" id="price1" />
+      <input type="text" id="price1" v-model="newPizza.options[0].price" />
     </div>
     <p>
       <strong>Option 2:</strong>
     </p>
     <div class="form-group">
       <label for="size2">Size (")</label>
-      <input type="text" id="size2" />
+      <input type="text" id="size2" v-model="newPizza.options[1].size" />
     </div>
     <div class="form-group">
       <label for="price2">Price</label>
-      <input type="text" id="price2" />
+      <input type="text" id="price2" v-model="newPizza.options[1].price" />
     </div>
-    <button type="button" class="btn_green">Add</button>
+    <button type="button" class="btn_green" @click="add">Add</button>
   </form>
 </template>
 
 <script>
 export default {
-  name: "addNewPizza"
-}
+  name: "addNewPizza",
+  data() {
+    return {
+      newPizza: {
+        name: "Eg. Margherita",
+        description: "Eg. A delicious tomato based pizza topped with mozzarella",
+        options: [
+          {
+            size: 9,
+            price: 6.95
+          },
+          {
+            size: 12,
+            price: 10.95
+          }
+        ]
+      }
+    };
+  },
+  methods: {
+    add() {
+      alert('method triggered')
+    }
+  }
+};
 </script>
 
 <style scoped>
-.form-group{
+.form-group {
   margin: 10px 0;
 }
 
-label{
+label {
   display: block;
   margin: 0 0 10px 0;
 }
 
-input, textarea {
+input,
+textarea {
   width: 50%;
   padding: 5px;
   box-sizing: border-box;
@@ -59,7 +83,7 @@ input, textarea {
   border: solid 1px #f79e38;
 }
 
-button{
+button {
   background: rgb(63, 145, 63);
   color: #fff;
   padding: 5px 15px;

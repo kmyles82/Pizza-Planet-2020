@@ -2,7 +2,7 @@
   <div class="home">
     <appHeader />
     <appHome />
-    <appMenu />
+    <appAdmin />
   </div>
 </template>
 
@@ -10,14 +10,17 @@
 // @ is an alias to /src
 import Header from "../components/Header";
 import Home from "../components/Home";
-import Menu from "@/components/Menu";
+// import Menu from "@/components/Menu";
+import Admin from "@/components/Admin";
+
 
 export default {
   name: "Home",
   components: {
     appHeader: Header,
     appHome: Home,
-    appMenu: Menu
+    // appMenu: Menu,
+    appAdmin: Admin
   }
 };
 </script>
