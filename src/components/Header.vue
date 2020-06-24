@@ -7,20 +7,20 @@
     <nav>
       <ul>
         <li>
-        <a href="/">Home</a>
-      </li>
-      <span>~</span>
-      <li>
-        <a href="/menu">Menu</a>
-      </li>
-      <span>~</span>
-      <li>
-        <a href="/contact">Contact Us</a>
-      </li>
-      <span>~</span>
-      <li>
-        <a href="/about">About Us</a>
-      </li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <span>~</span>
+        <li>
+          <router-link to="/menu">Menu</router-link>
+        </li>
+        <span>~</span>
+        <li>
+          <router-link to="/contact">Contact Us</router-link>
+        </li>
+        <span>~</span>
+        <li>
+          <router-link to="/about">About Us</router-link>
+        </li>
       </ul>
     </nav>
   </header>
@@ -53,20 +53,20 @@ h1 {
   padding-top: 10px;
 }
 
-.header_logo img{
+.header_logo img {
   max-width: 25vw;
 }
 
-ul{
+ul {
   padding: 10px 0px;
 }
 
-li{
+li {
   display: inline-block;
 }
 
-@media screen and (min-width: 900px){
-  .header_logo img{
+@media screen and (min-width: 900px) {
+  .header_logo img {
     max-width: 20vw;
   }
 }
