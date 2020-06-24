@@ -1,7 +1,8 @@
 <template>
   <div class="admin_wrapper">
     <div class="current_user_wrapper">
-
+      <span>Logged in as:</span>
+      <button type="button" class="btn_red" @click.prevent="signOut">Sign Out</button>
     </div>
     <NewPizza />
     <div class="menu_wrapper">
@@ -57,12 +58,22 @@
 <script>
 import NewPizza from "@/components/NewPizza";
 import Login from "@/components/Login";
+import { firebaseAuth } from "../firebase";
 
 export default {
   name: "admin",
   components: {
     NewPizza,
     Login
+  },
+  methods: {
+    async signOut(){
+      try {
+        await firebaseAuth.signOut()
+      } catch (error) {
+        alert(`error signing out, ${error}`);
+      }
+    }
   }
 };
 </script>
@@ -80,7 +91,7 @@ export default {
   border: solid 1px #f79e38;
 }
 
-table{
+table {
   text-align: left;
   width: 70vw;
 }
