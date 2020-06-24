@@ -50,16 +50,19 @@
         </tbody>
       </table>
     </div>
+    <Login />
   </div>
 </template>
 
 <script>
 import NewPizza from "@/components/NewPizza";
+import Login from "@/components/Login";
 
 export default {
   name: "admin",
   components: {
-    NewPizza    
+    NewPizza,
+    Login
   }
 };
 </script>
