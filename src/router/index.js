@@ -3,6 +3,11 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Menu from "../components/Menu.vue";
 import Contact from "../components/Contact.vue";
+import About from "../views/About.vue";
+import History from "../components/History.vue";
+import Delivery from "../components/Delivery.vue";
+import orderingGuide from "../components/OrderingGuide.vue";
+import Admin from "../components/Admin.vue";
 
 Vue.use(VueRouter);
 
@@ -23,13 +28,32 @@ const routes = [
     component: Contact
   },
   {
+    path: "/admin",
+    component: Admin,
+    name: "admin"
+  },
+  {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    component: About,
+    children: [
+      {
+        path: "/history",
+        component: History
+      },
+      {
+        path: "/delivery",
+        component: Delivery
+      },
+      {
+        path: "/ordering",
+        component: orderingGuide
+      }
+    ]
+  },
+  {
+    path: "*",
+    redirect: "/"
   }
 ];
 

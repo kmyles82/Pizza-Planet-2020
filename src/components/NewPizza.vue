@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .form-group {
   margin: 10px 0;
 }
