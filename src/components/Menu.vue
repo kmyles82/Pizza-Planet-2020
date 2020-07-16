@@ -139,7 +139,7 @@ export default {
         this.removeFromBasket(item);
       }
     },
-    removeFromBasket(item){
+    removeFromBasket(item) {
       this.basket.splice(this.basket.indexOf(item), 1);
     }
   }

@@ -9,7 +9,7 @@
         accusamus dolores ullam ab quis!
       </p>
     </div>
-    <img src="" alt="history image" />
+    <img src="../assets/planet.png" alt="history image" />
   </div>
 </template>
 
