@@ -3,10 +3,10 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Menu from "../components/Menu.vue";
 import Contact from "../components/Contact.vue";
-import About from "../views/About.vue";
+import About from "../components/About.vue";
 import History from "../components/History.vue";
 import Delivery from "../components/Delivery.vue";
-import orderingGuide from "../components/OrderingGuide.vue";
+import OrderingGuide from "../components/OrderingGuide.vue";
 import Admin from "../components/Admin.vue";
 
 Vue.use(VueRouter);
@@ -34,7 +34,7 @@ const routes = [
   },
   {
     path: "/about",
-    name: "About",
+    name: "about",
     component: About,
     children: [
       {
@@ -46,8 +46,8 @@ const routes = [
         component: Delivery
       },
       {
-        path: "/ordering",
-        component: orderingGuide
+        path: "/orderingGuide",
+        component: OrderingGuide
       }
     ]
   },
