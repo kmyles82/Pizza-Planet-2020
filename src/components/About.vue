@@ -3,15 +3,15 @@
     <h3>~ Click on the link below for more info ~</h3>
     <nav>
       <ul>
-        <router-link to="/history" tag="li">
+        <router-link :to="{ name: 'history' }" tag="li">
           <a href class="nav-link">our history</a>
         </router-link>
         <span>~</span>
-        <router-link to="/orderingGuide" tag="li">
+        <router-link :to="{ name: 'orderingGuide' }" tag="li">
           <a href class="nav-link">ordering guide</a>
         </router-link>
         <span>~</span>
-        <router-link to="/delivery" tag="li">
+        <router-link :to="{ name: 'delivery' }" tag="li">
           <a href class="nav-link">delivery</a>
         </router-link>
       </ul>
