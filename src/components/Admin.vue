@@ -62,6 +62,10 @@ import { firebaseAuth } from "../firebase";
 
 export default {
   name: "admin",
+  data(){
+    return {
+    }
+  },
   components: {
     NewPizza,
     Login
@@ -73,7 +77,8 @@ export default {
       } catch (error) {
         alert(`error signing out, ${error}`);
       }
-    }
+    },
+    
   }
 };
 </script>

@@ -30,7 +30,11 @@ const routes = [
   {
     path: "/admin",
     component: Admin,
-    name: "admin"
+    name: "admin",
+    beforeEnter: (to, from, next) => {
+      alert('This is area is for authorized users only, please login to continue');
+      next()
+    }
   },
   {
     path: "/about",
