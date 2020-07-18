@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable */
+
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
@@ -32,7 +35,7 @@ const routes = [
     component: Admin,
     name: "admin",
     beforeEnter: (to, from, next) => {
-      alert('This is area is for authorized users only, please login to continue');
+      alert('This is area is for authorized users only, please login to continue')
       next()
     }
   },
@@ -67,7 +70,17 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to) {
+    if (to.hash) {
+      return  { selector: to.hash } 
+    // } else {
+    //   return {
+    //     x: 0,
+    //     y: 0
+    //   }
+    }
+  }
 });
 
 // router.beforeEach((to, from, next) => {
