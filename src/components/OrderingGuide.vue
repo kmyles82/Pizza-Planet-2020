@@ -8,8 +8,8 @@
         officiis nihil quasi deserunt, asperiores necessitatibus molestias
         accusamus dolores ullam ab quis!
       </p>
-    </div>
     <img src="../assets/order.png" alt="ordering image">
+    </div>
   </div>
 </template>
 

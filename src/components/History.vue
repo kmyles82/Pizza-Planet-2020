@@ -8,8 +8,8 @@
         officiis nihil quasi deserunt, asperiores necessitatibus molestias
         accusamus dolores ullam ab quis!
       </p>
-    </div>
     <img src="../assets/planet.png" alt="history image" />
+    </div>
   </div>
 </template>
 

@@ -18,7 +18,12 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: Home
+    components: {
+      default: Home,
+      'orderingGuide': OrderingGuide,
+      'delivery': Delivery,
+      'history': History
+    }
   },
   {
     path: "/menu",
@@ -74,11 +79,6 @@ const router = new VueRouter({
   scrollBehavior(to) {
     if (to.hash) {
       return  { selector: to.hash } 
-    // } else {
-    //   return {
-    //     x: 0,
-    //     y: 0
-    //   }
     }
   }
 });

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <appHome />
-    <appAdmin />
+    <!-- <appAdmin /> -->
   </div>
 </template>
 
@@ -9,14 +9,14 @@
 // @ is an alias to /src
 import Home from "../components/Home";
 // import Menu from "@/components/Menu";
-import Admin from "@/components/Admin";
+// import Admin from "@/components/Admin";
 
 export default {
   name: "Home",
   components: {
     appHome: Home,
     // appMenu: Menu,
-    appAdmin: Admin
+    // appAdmin: Admin
   }
 };
 </script>
