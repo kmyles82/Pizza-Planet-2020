@@ -1,5 +1,9 @@
-// export const 
+// export const getMenuItems = (state) => {
+//     return state.menuItems
+// }
 
-// export const 
+// export const numberOfOrders = (state) => {
+//     return state.orders.length
+// }
 
-// export const 
+// export const currentUser = (state) => state.currentUser

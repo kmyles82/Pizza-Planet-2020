@@ -1,4 +1,7 @@
-// export const 
+// export const addOrder = (state, orders) => {
+//     state.orders.push(orders);
+// }
   
-// export const 
+// export const userStatus = (state, user) => {
+//     user === null ? state.currentUser = null : state.currentUser = user.email
 //   }
