@@ -40,7 +40,7 @@ const routes = [
     component: Admin,
     name: "admin",
     beforeEnter: (to, from, next) => {
-      alert('This is area is for authorized users only, please login to continue')
+      // alert('This is area is for authorized users only, please login to continue')
       next()
     }
   },
