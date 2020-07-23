@@ -18,35 +18,23 @@
 </template>
 
 <script>
-import { firebaseAuth } from "../firebase";
+// import { store } from '../store/index'
 
 export default {
   name: "login",
   data() {
     return {
-      email: "",
-      password: ""
+      email: "kmyles82@gmail.com",
+      password: "password"
     };
   },
   methods: {
-    async signIn() {
-      try {
-        const email = this.email;
-        const password = this.password;
-        await firebaseAuth.signInWithEmailAndPassword(
-          email,
-          password
-        );
-      } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        if(errorCode === 'auth/wrong-password'){
-          alert('Wrong password')
-        } else {
-          alert(errorMessage)
-        }
+    signIn() {
+      const user = {
+        email: this.email,
+        password: this.password
       }
+      this.$store.dispatch('signIn', user)
     }
   }
 };
