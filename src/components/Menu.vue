@@ -56,7 +56,7 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 
 export default {
   name: "appMenu",
@@ -68,9 +68,10 @@ export default {
     };
   },
   computed:{
-    getMenuItems(){
-      return this.$store.getters.getMenuItems
-    }
+    ...mapGetters(['getMenuItems'])
+    // getMenuItems(){
+    //   return this.$store.getters.getMenuItems
+    // }
   },
   methods: {
     async addToBasket(item, option) {
