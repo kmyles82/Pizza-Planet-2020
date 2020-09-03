@@ -13,7 +13,8 @@
 <script>
 import Header from "./components/Header";
 import {
-  dbMenuRef
+  dbMenuRef,
+  dbOrders
 } from "./firebase";
 
 export default {
@@ -22,7 +23,9 @@ export default {
     appHeader: Header
   },
   created(){
+    //Dispatches when the app is created/binds to firestore immediately
     this.$store.dispatch('setMenuRef', dbMenuRef)
+    this.$store.dispatch('setOrdersRef', dbOrders)
   }
 };
 </script>
