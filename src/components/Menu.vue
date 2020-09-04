@@ -42,7 +42,7 @@
             </tr>
           </tbody>
         </table>
-        <p>Order total: {{}}$</p>
+        <p>Order total: {{total}}$</p>
         <button class="btn_green" @click="addNewOrder">Place Order</button>
       </div>
       <div v-else>
@@ -66,7 +66,16 @@ export default {
     };
   },
   computed:{
-    ...mapGetters(['getMenuItems'])
+    ...mapGetters(['getMenuItems']),
+    total(){
+      let totalCost = 0;
+
+      this.basket.map(item => {
+        totalCost += item.quantity * item.price
+      })
+
+      return totalCost
+    }
     // getMenuItems(){
     //   return this.$store.getters.getMenuItems
     // }
