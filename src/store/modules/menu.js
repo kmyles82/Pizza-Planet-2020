@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { firestoreAction } from 'vuexfire'
 import {
-  dbMenuRef
+  dbMenuRef,
+  dbOrdersRef
 } from "../../firebase"
 
 const state = {
@@ -23,6 +24,22 @@ const actions = {
       dbMenuRef.add(pizza);
     }catch(error){
       alert(`Error creating new pizza ${error}`)
+    }
+  },
+  removeMenuItem: async (context, id) => {
+    try{
+      const item = await dbMenuRef.doc(id);
+      item.delete();
+    }catch(error){
+      alert(`Error removing menu item ${error}`)
+    }
+  },
+  removeOrder: async (context, id) => {
+    try{
+      const order = await dbOrdersRef.doc(id);
+      order.delete();
+    }catch(error){
+      alert(`Error removing order ${error}`)
     }
   }
 }

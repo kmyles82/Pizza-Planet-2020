@@ -22,7 +22,7 @@
           <tr>
             <td>{{ item.name }}</td>
             <td>
-              <button type="button" class="btn_red">&times;</button>
+              <button type="button" class="btn_red" @click="removeMenuItem(item.id)">&times;</button>
             </td>
           </tr>
         </tbody>
@@ -43,7 +43,7 @@
           <tr class="order_number">
             <th colspan="4">
               <strong>Order Number: {{ index+1 }}</strong>
-              <button type="button" class="btn_red">&times;</button>
+              <button type="button" class="btn_red" @click="removeOrder(order.id)">&times;</button>
             </th>
           </tr>
           <tr v-for="(pizza, index) in order.pizzas" :key="pizza.id">
@@ -94,6 +94,12 @@ export default {
     signOut() {
       this.$store.dispatch("signOut");
     },
+    removeMenuItem(id) {
+      this.$store.dispatch('removeMenuItem', id)
+    },
+    removeOrder(id) {
+      this.$store.dispatch('removeOrder', id)
+    }
   },
 };
 </script>
