@@ -1,9 +1,12 @@
+/* prettier/prettier *//* eslint-disable */
 <template>
   <div class="admin_wrapper">
     <div class="current_user_wrapper">
       <span>Logged in as:</span>
       {{ currentUser }}
-      <button type="button" class="btn_red" @click.prevent="signOut">Sign Out</button>
+      <button type="button" class="btn_red" @click.prevent="signOut">
+        Sign Out
+      </button>
     </div>
     <NewPizza />
     <div class="menu_wrapper">
@@ -36,18 +39,18 @@
             <th>Price</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-for="(order, index) in getOrders" :key="index">
           <tr class="order_number">
             <th colspan="4">
-              <strong>Order Number: 4</strong>
+              <strong>Order Number: {{ index+1 }}</strong>
               <button type="button" class="btn_red">&times;</button>
             </th>
           </tr>
-          <tr>
-            <td>Margherita</td>
-            <td>9"</td>
-            <td>2</td>
-            <td>$6.95</td>
+          <tr v-for="(pizza, index) in order.pizzas" :key="pizza.id">
+            <td>{{ pizza.name }}</td>
+            <td>{{ pizza.size }}"</td>
+            <td>{{ pizza.quantity }}</td>
+            <td>{{ pizza.price * pizza.quantity }}</td>
           </tr>
         </tbody>
       </table>
@@ -59,23 +62,24 @@
 <script>
 import NewPizza from "@/components/NewPizza";
 import Login from "@/components/Login";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   name: "admin",
-  data(){
-    return {
-    }
+  data() {
+    return {};
   },
   components: {
     NewPizza,
-    Login
+    Login,
   },
   computed: {
     ...mapGetters([
-      'getMenuItems',
-      'numberOfOrders',
-      'currentUser']),
+      "getMenuItems",
+      "numberOfOrders",
+      "currentUser",
+      "getOrders",
+    ]),
     // getMenuItems(){
     //   return this.$store.getters.getMenuItems
     // },
@@ -87,11 +91,10 @@ export default {
     // }
   },
   methods: {
-     signOut(){
-      this.$store.dispatch('signOut')
+    signOut() {
+      this.$store.dispatch("signOut");
     },
-    
-  }
+  },
 };
 </script>
 
@@ -113,7 +116,7 @@ table {
   width: 70vw;
 }
 
-.order_number th{
+.order_number th {
   background: #ddd;
 }
 

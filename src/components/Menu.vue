@@ -1,6 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable */
-
 <template>
   <div class="menu_wrapper">
     <!-- menu -->
@@ -57,6 +54,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { store } from '../store/index'
 
 export default {
   name: "appMenu",
@@ -106,7 +104,12 @@ export default {
       this.basket.splice(this.basket.indexOf(item), 1);
     },
     addNewOrder(){
-      this.$store.commit('addOrder', this.basket);
+      const order = {
+        pizzas: {...this.basket},
+        createAt: new Date()
+      }
+      // this.$store.commit('addOrder', this.basket);
+      this.$store.dispatch('addNewOrder', order)
       this.basket = []
       this.basketText = 'Thank you, your order has been placed.'
     }

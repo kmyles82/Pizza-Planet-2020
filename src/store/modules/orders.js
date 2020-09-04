@@ -1,6 +1,6 @@
 import { firestoreAction } from 'vuexfire'
 import {
-  dbOrders
+  dbOrdersRef
 } from "../../firebase"
 
 const state = { 
@@ -13,14 +13,21 @@ const getters = {
 }
 
 const mutations = {
-  addOrder: (state, orders) => {
-    state.orders.push(orders);
-  }
+  // addOrder: (state, orders) => {
+  //   state.orders.push(orders);
+  // }
 }
 const actions = {
   setOrdersRef: firestoreAction(context => {
-    return context.bindFirestoreRef('orders', dbOrders)
-  })
+    return context.bindFirestoreRef('orders', dbOrdersRef.orderBy('createAt'))
+  }),
+  addNewOrder: async(context, order) => {
+    try{
+      await dbOrdersRef.add(order)
+    }catch(error){
+      alert('Sorry, there was a problem placing your order')
+    }
+  }
 }
 
 export default { state, getters, mutations, actions }
