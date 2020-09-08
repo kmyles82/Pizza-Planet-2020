@@ -5,8 +5,11 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Menu from "../components/Menu.vue";
+// const Menu = () => import('../components/Menu.vue')
 import Contact from "../components/Contact.vue";
+// const Contact = () => import(/* webpackChunkName: "menuGroup" */ '../components/Contact.vue')
 import About from "../components/About.vue";
+// const About = () => import(/* webpackChunkName: "menuGroup" */ '../components/About.vue')
 import History from "../components/History.vue";
 import Delivery from "../components/Delivery.vue";
 import OrderingGuide from "../components/OrderingGuide.vue";
@@ -40,8 +43,8 @@ const routes = [
     component: Admin,
     name: "admin",
     beforeEnter: (to, from, next) => {
-      // alert('This is area is for authorized users only, please login to continue')
-      next()
+      alert('This area is for authorised users only, please login to continue');
+      next();
     }
   },
   {

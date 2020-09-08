@@ -43,7 +43,6 @@ const actions = {
       }
     }
   },
-
   signOut: async ({
     commit
   }) => {
